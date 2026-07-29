@@ -1,0 +1,36 @@
+---
+import { aboutData as copy } from "../data/about";
+---
+
+<section class="about" aria-label="About">
+  <div class="about-copy">
+    <p class="about-intro">{copy.intro}</p>
+
+    <dl class="about-contact">
+      <div>
+        <dt>Email</dt>
+        <dd><a href={`mailto:${copy.contact.email}`}>{copy.contact.email}</a></dd>
+      </div>
+      <div>
+        <dt>LinkedIn</dt>
+        <dd>
+          <a href={copy.contact.linkedin} target="_blank" rel="noreferrer">
+            {copy.contact.linkedinLabel} ↗
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="about-photo-frame">
+    <img
+      class="about-photo"
+      src="/profile.jpg"
+      alt="Portrait of Yusin Kim"
+      width="3000"
+      height="4200"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </div>
+</section>

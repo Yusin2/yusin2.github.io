@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>YS</title>
+  <rect width="64" height="64" rx="8" fill="#111"/>
+  <path d="M4 14h8l7 12 7-12h8L23 33v17h-8V33z" fill="#fff"/>
+  <path d="M58 15v7H44c-2 0-3 1-3 2 0 2 2 2 6 3 7 2 12 5 12 12 0 8-6 12-15 12H32v-7h13c4 0 6-1 6-3s-2-3-7-4c-7-2-11-5-11-11 0-7 5-11 13-11z" fill="#fff"/>
+</svg>

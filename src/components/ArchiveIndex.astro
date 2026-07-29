@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { archiveData as copy } from "../data/archive";
+
+interface Props {
+  posts: CollectionEntry<"archive">[];
+}
+
+const { posts } = Astro.props;
+const external = copy.externalPosts;
+const instagram = copy.instagramPosts;
+const sorted = posts.toSorted((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+const empty = sorted.length === 0 && external.length === 0;
+---
+
+<section class="instagram-gallery" aria-label="Instagram posts">
+  {
+    instagram.map((post, index) => (
+      <a
+        class="instagram-thumbnail"
+        href={post.url}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`View Instagram post ${index + 1}`}
+      >
+        <img
+          src={post.image}
+          alt=""
+          width="640"
+          height="640"
+          loading="lazy"
+        />
+      </a>
+    ))
+  }
+</section>
+
+<section class="post-list" aria-live="polite">
+  {empty && <p class="empty-state">{copy.emptyMessage}</p>}
+  {
+    sorted.map((post) => (
+      <a class="post-card" href={`/archive/${post.id}/`}>
+        <h2>
+          <time datetime={post.data.published.toISOString()}>
+            [{post.data.published.toISOString().slice(0, 10)}]
+          </time>{" "}
+          {post.data.title}
+        </h2>
+        <span>Read →</span>
+      </a>
+    ))
+  }
+  {
+    external.map((post) => (
+      <a class="post-card" href={post.url} target="_blank" rel="noreferrer">
+        <h2>
+          <time datetime={post.date}>[{post.date}]</time>{" "}
+          {post.title}
+        </h2>
+        <span>{post.source} ↗</span>
+      </a>
+    ))
+  }
+</section>

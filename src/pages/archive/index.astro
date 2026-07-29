@@ -1,0 +1,14 @@
+---
+import { getCollection } from "astro:content";
+import ArchiveIndex from "../../components/ArchiveIndex.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = await getCollection("archive");
+---
+
+<BaseLayout
+  title="Archive — Yusin Kim"
+  pathname="/archive/"
+>
+  <ArchiveIndex {posts} />
+</BaseLayout>

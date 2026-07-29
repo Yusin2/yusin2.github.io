@@ -1,0 +1,39 @@
+---
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  pathname: string;
+}
+
+const { title, description, pathname } = Astro.props;
+const canonical = new URL(pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    {description && <meta name="description" content={description} />}
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <span>SEOUL, SOUTH KOREA</span>
+      <span>© {new Date().getFullYear()}</span>
+    </footer>
+  </body>
+</html>

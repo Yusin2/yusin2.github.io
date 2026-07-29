@@ -1,0 +1,57 @@
+---
+import { journeyData as copy } from "../data/journey";
+---
+
+<section class="section page-content" aria-label={copy.ariaLabel}>
+  <div class="journey-groups">
+    {copy.groups.map((group) => (
+      <section class="journey-group">
+        <h2>{group.title}</h2>
+        <div class="journey-list">
+          {group.items.map((item) => (
+            <article>
+              <time>{item.period}</time>
+              <div class="journey-details">
+                <strong>
+                  {item.organizationUrl ? (
+                    <a href={item.organizationUrl} target="_blank" rel="noreferrer">
+                      {item.organization} ↗
+                    </a>
+                  ) : item.organization}
+                </strong>
+                {item.role && (
+                  <span>
+                    {item.roleUrl ? (
+                      <a href={item.roleUrl} target="_blank" rel="noreferrer">
+                        {item.role}
+                      </a>
+                    ) : item.role}
+                  </span>
+                )}
+                {item.details && (
+                  <ul>
+                    {item.details.map((detail) => (
+                      <li>
+                        {typeof detail === "string"
+                          ? detail
+                          : detail.map((part) => (
+                            typeof part === "string"
+                              ? part
+                              : (
+                                <a href={part.url} target="_blank" rel="noreferrer">
+                                  {part.text}
+                                </a>
+                              )
+                          ))}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</section>

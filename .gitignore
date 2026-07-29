@@ -1,0 +1,10 @@
+.DS_Store
+coverage/
+node_modules/
+dist/
+.astro/
+.superpowers/
+docs/
+.codex
+.agents
+tests/

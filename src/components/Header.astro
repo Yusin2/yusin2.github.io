@@ -1,0 +1,15 @@
+---
+import { headerData as copy } from "../data/header";
+---
+
+<header class="site-header">
+  <a class="wordmark" href="/">{copy.wordmark}</a>
+  <nav aria-label="Primary">
+    <a href="/">{copy.nav.about}</a>
+    <a href="/journey/">{copy.nav.journey}</a>
+    <a href="/archive/">{copy.nav.archive}</a>
+  </nav>
+  <div class="header-meta">
+    <span class="status"><span aria-hidden="true"></span>{copy.status}</span>
+  </div>
+</header>
