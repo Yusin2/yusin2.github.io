@@ -141,7 +141,7 @@ const groups: JourneyGroup[] = [
       {
         period: "2018.3 - 2020.2",
         organization: "Busan Science High School",
-        organizationUrl: "https://school.busanedu.net/"
+        organizationUrl: "https://school.busanedu.net/bss-h/main.do"
       }
     ]
   },
